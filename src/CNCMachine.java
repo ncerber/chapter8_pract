@@ -22,9 +22,20 @@ public class CNCMachine {
     }
 
     class Controller {
-        public void execProgramm(){
+        public void execProgramm(cncHead head){
             if(programm.length==0){
-
+                System.out.println("Программа не задана, выполнение не возможно");
+            }
+            goNullPosition();
+            for (int i = 0; i < programm.length; i++) {
+                if(programm[i].isOn()){
+                    head.headOn();
+                    head.setPower(programm[i].getPower());
+                } else {
+                    head.headOff();
+                    head.setPower(0);
+                }
+                moveToNewPosition(programm[i]);
             }
         }
 

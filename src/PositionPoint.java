@@ -27,4 +27,12 @@ public class PositionPoint {
     public int getY() {
         return y;
     }
+
+    public int getPower() {
+        return power;
+    }
+
+    public boolean isOn() {
+        return isOn;
+    }
 }
