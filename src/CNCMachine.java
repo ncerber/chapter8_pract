@@ -6,9 +6,11 @@ public class CNCMachine {
     private boolean isMachineOn;
     private static final int maxWidth  = 1000;
     private static final int maxHeight = 1000;
+    public Controller controller;
 
     public CNCMachine(String idMachine) {
         this.idMachine = idMachine;
+        controller = new Controller();
     }
 
     private void goNullPosition() {
@@ -41,7 +43,7 @@ public class CNCMachine {
 
         public void loadProgramm(PositionPoint[] positionPoints){
             boolean allOk = true;
-            programm = new PositionPoint[];
+            programm = new PositionPoint[positionPoints.length];
             for (PositionPoint pp: positionPoints){
                 if (pp.getX()>maxWidth){
                     allOk = false;
